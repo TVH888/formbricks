@@ -1,13 +1,5 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "tasks": {
-    "@formbricks/i18n-utils#build": {
-      "dependsOn": ["^build"],
-      "outputs": ["packages/i18n-utils/dist/**"]
-    },
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": []
-    }
-  }
+  "extends": "../../turbo.json",
+  "tasks": {}
 }
