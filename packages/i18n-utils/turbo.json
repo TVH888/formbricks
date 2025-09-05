@@ -1,0 +1,13 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "@formbricks/i18n-utils#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["packages/i18n-utils/dist/**"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    }
+  }
+}
