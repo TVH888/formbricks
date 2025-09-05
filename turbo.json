@@ -1,70 +1,70 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "tasks": {
-    "@formbricks/database#build": {
+    "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "@formbricks/database#lint": {
-      "dependsOn": ["@formbricks/logger#build", "@formbricks/database#build"]
+    "lint": {
+      "dependsOn": ["build", "build"]
     },
-    "@formbricks/database#setup": {
+    "setup": {
       "dependsOn": ["db:up"]
     },
-    "@formbricks/i18n-utils#build": {
+    "build": {
       "dependsOn": ["^build"],
       "outputs": ["packages/i18n-utils/dist/**"]
     },
-    "@formbricks/i18n-utils#lint": {
+    "lint": {
       "dependsOn": ["^lint"]
     },
-    "@formbricks/i18n-utils#test": {
-      "dependsOn": ["@formbricks/i18n-utils#build"]
+    "test": {
+      "dependsOn": ["build"]
     },
-    "@formbricks/js-core#build": {
-      "dependsOn": ["^build", "@formbricks/database#build"],
+    "build": {
+      "dependsOn": ["^build", "build"],
       "outputs": ["dist/**"]
     },
-    "@formbricks/js-core#go": {
+    "go": {
       "cache": false,
-      "dependsOn": ["@formbricks/database#db:setup"],
+      "dependsOn": ["db:setup"],
       "persistent": true
     },
-    "@formbricks/js-core#lint": {
-      "dependsOn": ["@formbricks/database#build"]
+    "lint": {
+      "dependsOn": ["build"]
     },
-    "@formbricks/react-native#build": {
-      "dependsOn": ["^build", "@formbricks/database#build"],
+    "build": {
+      "dependsOn": ["^build", "build"],
       "outputs": ["dist/**"]
     },
-    "@formbricks/react-native#go": {
+    "go": {
       "cache": false,
-      "dependsOn": ["@formbricks/database#db:setup"],
+      "dependsOn": ["db:setup"],
       "persistent": true
     },
-    "@formbricks/surveys#build": {
+    "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "@formbricks/surveys#build:dev": {
-      "dependsOn": ["^build:dev", "@formbricks/i18n-utils#build"],
+    "build:dev": {
+      "dependsOn": ["^build:dev", "build"],
       "outputs": ["dist/**"]
     },
-    "@formbricks/surveys#go": {
+    "go": {
       "cache": false,
-      "dependsOn": ["@formbricks/surveys#build"],
+      "dependsOn": ["build"],
       "persistent": true
     },
-    "@formbricks/web#go": {
+    "go": {
       "cache": false,
-      "dependsOn": ["@formbricks/database#db:setup"],
+      "dependsOn": ["db:setup"],
       "persistent": true
     },
-    "@formbricks/web#test": {
-      "dependsOn": ["@formbricks/logger#build", "@formbricks/database#build"]
+    "test": {
+      "dependsOn": ["build", "build"]
     },
-    "@formbricks/web#test:coverage": {
-      "dependsOn": ["@formbricks/logger#build", "@formbricks/database#build"]
+    "test:coverage": {
+      "dependsOn": ["build", "build"]
     },
     "build": {
       "dependsOn": ["^build"],
@@ -209,7 +209,7 @@
     },
     "db:setup": {
       "cache": false,
-      "dependsOn": ["@formbricks/logger#build", "@formbricks/database#build"],
+      "dependsOn": ["build", "build"],
       "outputs": []
     },
     "db:start": {
@@ -241,7 +241,7 @@
       "persistent": true
     },
     "storybook#storybook": {
-      "dependsOn": ["@formbricks/logger#build"]
+      "dependsOn": ["build"]
     },
     "test": {
       "outputs": []
